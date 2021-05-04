@@ -8,12 +8,18 @@
         Title="MainWindow" Height="450" Width="800"
         Loaded="Window_Loaded">
     <Grid>
-        <ListBox x:Name="lsbxCars" HorizontalAlignment="Left" Height="242" Margin="93,113,0,0" VerticalAlignment="Top" Width="308" SelectionChanged="lsbxCars_SelectionChanged"/>
+        <ListBox x:Name="lsbxCars" HorizontalAlignment="Left" Height="187" Margin="93,197,0,0" VerticalAlignment="Top" Width="344" SelectionChanged="lsbxCars_SelectionChanged" SelectedValuePath="Id"/>
         <ComboBox x:Name="cmbCarTypes" HorizontalAlignment="Left" Margin="93,41,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cmbCarTypes_SelectionChanged"/>
-        <DatePicker x:Name="dtpStartDate" HorizontalAlignment="Left" Margin="486,41,0,0" VerticalAlignment="Top"/>
-        <DatePicker x:Name="dtpEndDate" HorizontalAlignment="Left" Margin="486,82,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnBook" Content="Book" HorizontalAlignment="Left" Margin="670,379,0,0" VerticalAlignment="Top" Width="81"/>
-        <TextBlock x:Name="txblSelectedCar" HorizontalAlignment="Left" Margin="458,160,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="195" Width="250"/>
+        <DatePicker x:Name="dtpStartDate" HorizontalAlignment="Left" Margin="93,89,0,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="dtpEndDate" HorizontalAlignment="Left" Margin="93,143,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnBook" Content="Book" HorizontalAlignment="Left" Margin="670,379,0,0" VerticalAlignment="Top" Width="81" Click="btnBook_Click"/>
+        <TextBlock x:Name="txblSelectedCar" HorizontalAlignment="Left" Margin="474,197,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="163" Width="265"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,47,0,0" TextWrapping="Wrap" Text="Car Type" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,93,0,0" TextWrapping="Wrap" Text="Start Date" VerticalAlignment="Top" RenderTransformOrigin="0.634,3.02"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,147,0,0" TextWrapping="Wrap" Text="Return Date" VerticalAlignment="Top" RenderTransformOrigin="0.634,3.02"/>
+        <Button x:Name="btnSearch" Content="Search" HorizontalAlignment="Left" Margin="268,147,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBlock HorizontalAlignment="Left" Margin="458,20,0,0" TextWrapping="Wrap" Text="Shifty Nifty Car Rental" VerticalAlignment="Top" Height="33" Width="281"/>
+        <Image x:Name="carImage" HorizontalAlignment="Left" Height="104" Margin="458,63,0,0" VerticalAlignment="Top" Width="281"/>
 
     </Grid>
 </Window>

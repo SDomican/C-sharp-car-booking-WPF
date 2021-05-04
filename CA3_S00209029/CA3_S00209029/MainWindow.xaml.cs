@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,10 +16,14 @@ using System.Windows.Shapes;
 
 namespace CA3_S00209029
 {
-   
+
 
     public partial class MainWindow : Window
     {
+
+        CarsAndBookingsEntities db = new CarsAndBookingsEntities();
+        List<String> carTypes = new List<String>();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -26,42 +31,44 @@ namespace CA3_S00209029
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            CarsAndBookingsEntities db = new CarsAndBookingsEntities();
 
 
-            List<CarObject> carList = new List<CarObject>();
+            carImage.Source = new BitmapImage(new Uri("/Images/vw.png", UriKind.Relative));
 
-            /*var query = from c in db.Cars
-                        select c.Model;
+
+            /*var query = (from c in db.Cars
+                         select new
+                         {
+                             Id = c.Id,
+                             Make = c.Make,
+                             Model = c.Model,
+                             Size = c.Size
+                         }).AsEnumerable().Select(item => new Car()
+                         {
+                             Make = item.Make,
+                             Model = item.Model,
+                             Size = item.Size
+                         });
+            
             */
             var query = from c in db.Cars
-                        select new
-                        {
-                            Id = c.Id,
-                            Make = c.Make,
-                            Model = c.Model,
-                            Size = c.Size
-                        };
-            
-            foreach(var item in query)
-            {
-                carList.Add(new CarObject() {
-                    ID = item.Id,
-                    Make = item.Make,
-                    Model = item.Model,
-                    Size = item.Size
-                });
-
-            }
+                        select c.ToString();
+                        
 
 
-            var carTypes = from c in db.Cars
-                           select c.Size;
 
-            lsbxCars.ItemsSource = carList.OrderBy(car => car.Make)
-                .ThenBy(car => car.Model);
+            carTypes = (from c in db.Cars
+                        select c.Size).ToList();
+            carTypes.Add("All");
+            carTypes = carTypes.OrderBy(type => type).ToList();
 
-            cmbCarTypes.ItemsSource = carTypes.ToList();
+            //lsbxCars.ItemsSource = query.ToList().OrderBy(car => car.Make)
+            //.ThenBy(car => car.Model);
+
+            lsbxCars.ItemsSource = query.ToList();
+
+
+            cmbCarTypes.ItemsSource = carTypes.ToList().Distinct();
 
         }
 
@@ -71,16 +78,44 @@ namespace CA3_S00209029
             
             string selectedType = cmbCarTypes.SelectedItem as String;
 
+            if (selectedType.Equals("All"))
+            {
+                lsbxCars.ItemsSource = (from c in db.Cars
+                                        select c).ToList()
+                                        .OrderBy(car => car.Make)
+                                        .ThenBy(car => car.Model);
+            }
 
-
-
+            else
+            {
+                lsbxCars.ItemsSource = (from c in db.Cars
+                                        where c.Size.Equals(selectedType)
+                                        select c).ToList()
+                                        .OrderBy(car => car.Make)
+                                        .ThenBy(car => car.Model);
+            }
+                                   
         }
 
         private void lsbxCars_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
-            string selectedCar = lsbxCars.SelectedItem as String;
+            MessageBox.Show(lsbxCars.SelectedItem.ToString());
 
+
+            /*int selectedCarId = Convert.ToInt32(lsbxCars.SelectedItem);
+               
+
+            var query = from c in db.Cars
+                       where c.Id == selectedCarId
+                       select c;
+
+            txblSelectedCar.Text = query.ToString();
+            */
+        }
+
+        private void btnBook_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }
