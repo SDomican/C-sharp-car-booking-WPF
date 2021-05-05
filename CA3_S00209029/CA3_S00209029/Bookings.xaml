@@ -1,0 +1,14 @@
+﻿<Window x:Class="CA3_S00209029.Bookings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CA3_S00209029"
+        mc:Ignorable="d"
+        Title="Bookings" Height="370" Width="320" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <TextBlock x:Name="txblBookingConfirmation" HorizontalAlignment="Left" Margin="39,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="231" Width="220"><Run Text="Booking confirmation:"/><LineBreak/><Run/><LineBreak/><Run/></TextBlock>
+        <Button x:Name="btnOk" Content="Ok" HorizontalAlignment="Left" Margin="184,291,0,0" VerticalAlignment="Top" Width="75" Click="btnOk_Click"/>
+
+    </Grid>
+</Window>

@@ -79,6 +79,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Bookings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -89,6 +93,9 @@
     </Compile>
     <Compile Include="Booking.cs">
       <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Bookings.xaml.cs">
+      <DependentUpon>Bookings.xaml</DependentUpon>
     </Compile>
     <Compile Include="Car.cs">
       <DependentUpon>Model1.tt</DependentUpon>
