@@ -19,7 +19,21 @@ namespace CA3_S00209029
     /// </summary>
     public partial class Bookings : Window
     {
+        CarsAndBookingsEntities db = new CarsAndBookingsEntities();
         
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            MainWindow main = Owner as MainWindow;
+
+            Car selectedCar = main.lsbxCars.SelectedItem as Car;
+            
+            txblBookingConfirmation.Text = String.Format("Booking confirmation:\n\nCar Id: {0}\nMake: {1}\nModel: {2}\nType: {3}\nRental Date: {4}\nReturn Date: {5}", selectedCar.Id, selectedCar.Make, selectedCar.Model, selectedCar.Size, main.dtpStartDate.SelectedDate.Value.ToShortDateString(), main.dtpEndDate.SelectedDate.Value.ToShortDateString());
+
+            
+        }
+
+
         public Bookings()
         {
             InitializeComponent();

@@ -20,6 +20,7 @@
         <Button x:Name="btnSearch" Content="Search" HorizontalAlignment="Left" Margin="268,147,0,0" VerticalAlignment="Top" Width="75"/>
         <TextBlock HorizontalAlignment="Left" Margin="458,20,0,0" TextWrapping="Wrap" Text="Shifty Nifty Car Rental" VerticalAlignment="Top" Height="33" Width="281"/>
         <Image x:Name="carImage" HorizontalAlignment="Left" Height="104" Margin="458,63,0,0" VerticalAlignment="Top" Width="281"/>
+        <ListBox x:Name="lsbBookingsTest" HorizontalAlignment="Left" Height="132" Margin="236,10,0,0" VerticalAlignment="Top" Width="201"/>
 
     </Grid>
 </Window>
